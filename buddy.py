@@ -37,13 +37,12 @@ def TakeInput():
 
 
 def sendMail(to, content):
-    t = open('C:\Python\Programs\pass.txt', 'r')
-    data = t.read()
+    data = os.environ.get("EMAIL PASSWORD")
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
     server.starttls()
-    server.login('rahulkumar7870974924@gmail.com', f'{data}')
-    server.sendmail('rahulkumar7870974924@gmail.com', f'{to}', f"{content}")
+    server.login(os.environ.get("EMAIL"), f'{data}')
+    server.sendmail(os.environ.get("EMAIL"), f'{to}', f"{content}")
     server.close()
     t.close()
 
@@ -86,8 +85,7 @@ if (__name__ == '__main__'):
         elif('open whatsapp' or 'open whatsapp for me') in query:
             webbrowser.open('web.whatsapp.com')
         elif('send message' or 'send message on whatsapp') in query:
-            d = {'Gulshan': '+919693888785', 'mama': '+918586869636',
-                 'mummy': '+919852094175', 'Vishal': '+916206702765', 'Aman': '+917004402157',('Bablu'or'bablu'):'+919708166877',('Vivek'or'vivek'):'+919355220558',('Kanhaiya'or'kanhaiya'):'+917991149497'}
+            d = {}
             speak("whom you want to send it")
             p = TakeInput()
             if f'{p}' in d.keys():
@@ -127,7 +125,7 @@ if (__name__ == '__main__'):
         elif 'aapke papa aaye hain' in query:
             speak('namaste pappa what I can do for you')
         elif('send mail' or 'send mail using gmail') in query:
-            d = {'Navneet':'navneetsinha2003@gmail.com','Gulshan': 'yadavharsh545@gmail.com', 'mama': 'yadav.surendra350@gmail.com', 'mummy': 'rahulkumar2661984@gmail.com',
+            d = {'Navneet':'navneetsinha2003@gmail.com','harsh': 'yadavharsh545@gmail.com', 'surendra': 'yadav.surendra350@gmail.com', 'mine': 'rahulkumar2661984@gmail.com',
                  'to my another mail account': 'rahul.yaduwanshi007@gmail.com', 'to me': 'itsrahulranjan7@gmail.com',('Bablu'or'bablu'):'bk9708166877@gmail.com',('Ayush'or'ayush'):'ayushpandey2262@gmail.com'}
             speak("whom you want to send it")
             p = TakeInput()
